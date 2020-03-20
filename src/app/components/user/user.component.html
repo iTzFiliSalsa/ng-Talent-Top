@@ -1,0 +1,112 @@
+<div class="container" *ngIf="status != 'success'">
+    <div class="row h-100 justify-content-center align-items-center">
+        <div class="col-12 transition">
+            <img class="logotop d-md-none" src="../../../assets/images/logo.png" alt="">
+            <div class="shadow pl-3 pr-3 mb-5 rounded">
+                <div class="row">
+                    <!-- <div class="d-none d-xd-block d-sm-block col-md-6 bg-v-height background"> -->
+                    <div class="d-none d-md-block col-md-6 bg-v-height background">
+                        <img class="logoscreen" src="../../../assets/images/logo.png" alt="">
+                    </div>
+                    <div class="col-sm-12 col-md-6 bg-white">
+                        <ul class="nav nav-tabs border-0 row" role="tablist">
+                            <li class="col-6 nav-item text-center">
+                                <a class="nav-link p-3 border-0 active" href="#login" role="tab"
+                                    data-toggle="tab">Login</a>
+                            </li>
+                            <li class="col-6 nav-item text-center">
+                                <a class="nav-link p-3 border-0" href="#signup" role="tab"
+                                    data-toggle="tab">Registro</a>
+                            </li>
+                        </ul>
+                        <div class="pl-5 pr-5 pb-5 pt-4">
+                            <div class="tab-content">
+                                <div role="tabpanel" class="tab-pane active" id="login">
+                                    <h3>{{title}}</h3>
+                                    <div class="line"></div>
+                                    <form #loginForm="ngForm" class="mt-2" (ngSubmit)="login(loginForm)">
+                                        <div class="form-group">
+                                            <label for="matricula">Matricula</label>
+                                            <input type="text" placeholder="1601F0000" name="matricula" #control="ngModel"
+                                                [(ngModel)]="user.matricula" class="form-control" pattern="[0-9]{4}F[0-9]{4}" required>
+                                            <small class="invalid-feedback d-block"
+                                                *ngIf="!control.valid && control.touched">Ingrese la matricula</small>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="contrasena">Contraseña</label>
+                                            <input type="password" placeholder="Contraseña" name="contrasena"
+                                                #password="ngModel" [(ngModel)]="user.contrasena" class="form-control"
+                                                required>
+                                            <small class="invalid-feedback d-block"
+                                                *ngIf="!password.valid && password.touched">Ingrese la
+                                                contraseña</small>
+                                        </div>
+                                        <input type="submit" value="Iniciar Sesión"
+                                            class="d-block btn btn-border-gradient background mt-3"
+                                            [disabled]="!req || loginForm.invalid">
+                                            <small class="invalid-feedback d-block"
+                                                *ngIf="status == 'error'">La contraseña es incorrecta</small>
+                                            <a href="#" class="d-block mt-3 text-center">Olvide mi contraseña</a>
+                                    </form>
+                                </div>
+                                <div role="tabpanel" class="tab-pane fade" id="signup">
+                                    <h3>{{register_title}}</h3>
+                                    <div class="line"></div>
+                                    <form #registerForm="ngForm" class="mt-2" (ngSubmit)="signup(registerForm)">
+                                        <div class="form-row">
+                                            <div class="form-group col-sm-12 col-md-8">
+                                                <label for="matricula">Matricula</label>
+                                                <input type="text" placeholder="Matricula" name="matricula"
+                                                    #matricula="ngModel" class="form-control" [(ngModel)]="register.matricula"
+                                                    required>
+                                            </div>
+                                            <div class="form-group col-sm-12 col-md-4">
+                                                <label for="semestre">Semestre</label>
+                                                <select name="semestre" #semestre="ngModel" [(ngModel)]="register.semestre"
+                                                    class="form-control" required>
+                                                    <option selected value="2">2</option>
+                                                    <option value="2">4</option>
+                                                    <option value="2">6</option>
+                                                    <option value="2">8</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-sm-12 col-md-6">
+                                                <label for="nombre">Nombre</label>
+                                                <input type="text" name="nombre" #nameRegister="ngModel"
+                                                    [(ngModel)]="register.nombre" class="form-control" placeholder="Nombre"
+                                                    required>
+                                            </div>
+                                            <div class="form-group col-sm-12 col-md-6">
+                                                <label for="apellidos">Apellido</label>
+                                                <input type="text" name="apellidos" #surnameRegister="ngModel"
+                                                    [(ngModel)]="register.apellidos" class="form-control"
+                                                    placeholder="Apellido" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="correo">Email</label>
+                                            <input type="email" name="correo" #emailRegister="ngModel"
+                                                [(ngModel)]="register.correo" class="form-control"
+                                                placeholder="Correo Electronico" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="contrasena">Contraseña</label>
+                                            <input type="password" name="contrasena" #nameRegister="ngModel"
+                                                [(ngModel)]="register.contrasena" class="form-control"
+                                                placeholder="Contraseña" required>
+                                        </div>
+                                        <input type="submit" value="Registrarme"
+                                            class="d-block btn btn-border-gradient background mt-3"
+                                            [disabled]="registerForm.invalid">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
