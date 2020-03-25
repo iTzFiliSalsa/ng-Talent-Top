@@ -1,3 +1,3 @@
 export var global = {
-    url: "http://localhost/api-rest-talent/api-rest-top/public/"
+    url: "http://localhost:8080/API-REST-TalentTop/public/"
 };

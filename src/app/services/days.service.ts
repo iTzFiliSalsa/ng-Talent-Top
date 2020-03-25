@@ -7,11 +7,13 @@ import { global } from './global';
 export class DayService{
 
     public url:string;
+
     constructor(
         public _http:HttpClient
     ){
         this.url = global.url;
     }
+
 
     cursos(semestre, dia):Observable<any>{
         return this._http.get(this.url+"cursos/"+dia+"/"+semestre);

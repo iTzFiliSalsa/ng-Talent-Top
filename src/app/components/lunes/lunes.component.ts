@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DayService } from '../../services/days.service';
 import { Router, ActivatedRoute, Params } from '@angular/router';
-import { NewCourse } from '../../models/newcourse';
 import { forkJoin } from 'rxjs';
 
 declare var $: any;
@@ -15,7 +14,6 @@ declare var $: any;
 export class LunesComponent implements OnInit {
 
   
-  public newCourse: NewCourse;
   public array: Array<any>;
   public description: Array<any>;
   public charging:boolean;
@@ -23,15 +21,16 @@ export class LunesComponent implements OnInit {
   public courses:any;
   public dia:string;
   public datos;
+
   constructor(
     public _dayService:DayService,
     private _router: Router,
     private _route: ActivatedRoute
   ) {
+
     this.array = [];
     this.description = [];
     this.dia = "Desconferencias del dia lunes";
-    this.newCourse = new NewCourse(0,0,0);
     this.charging = true;
     this.request = true;
     this.courses = {};
@@ -87,7 +86,7 @@ export class LunesComponent implements OnInit {
 
     this.array.forEach(idCurso => {
       let curso = {
-        idAlumno: 3,
+        idAlumno: 17,
         idCurso: idCurso
       };
       funciones.push(this._dayService.saveCurso(curso));

@@ -1,1 +1,67 @@
-<p>jueves works!</p>
+<div class="modal hide fade" data-keyboard="false" data-backdrop="static" id="waitModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title cursosfinal" id="exampleModalLabel">Guardando cursos</h5>
+          <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button> -->
+        </div>
+        <div class="modal-body">
+            <div class="bg-v-height-modal">
+              <div *ngIf="request == false">
+                <img class="logoscreenmobileconfirm my-3" src="../../../assets/images/correcto.png" alt="Consulta con exito">
+                <p class="text-center text-black">Cursos seleccionados con exito</p>
+              </div>
+                <img *ngIf="request == true" class="logoscreenmobileday" src="../../../assets/images/logo.png" alt="Realizando consulta">
+                
+            </div>
+            
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+ <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title cursosfinal" id="exampleModalLabel">Confirmar cursos</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+        <p>A continuación se muestran los cambios a cursar</p>
+        <div class="line my-3"></div>
+        <ul>
+          <li class="cursosfinal my-2" *ngFor="let nombres of description">
+              {{nombres}}
+          </li>
+        </ul>
+        <div class="line my-3"></div>
+        <p>Una vez confirmados los cursos, no podran cambiarse.</p>
+        
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn background text-white" data-dismiss="modal"  data-toggle="modal" data-target="#waitModal" (click)="confirm()">Confirmar cursos</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="container">
+    <div class="fix" *ngIf="charging != true">
+        <div class="circle background" data-toggle="modal" data-target="#exampleModal" *ngIf="array.length!=0" ><h4 class="centro text-white giro"><i class="fas fa-check "></i></h4> </div>
+    </div>
+    
+    <h3 class="text-white">{{dia}}</h3>
+    <img *ngIf="charging == true" class="logoscreenmobileday" src="../../../assets/images/logo.png" alt="">
+    <div class="d-flex flex-wrap" >
+        <div class="col-xs-6 col-sm-6 col-md-3 mt-3 t" *ngFor="let cursos of datos">
+            <p class="mitad">{{cursos.horaInicio}}</p>
+            <img class="imagesize" alt="{{cursos.nombreCurso}}" (click)="click($event, cursos.idCurso, cursos.nombreCurso)" src="../../../assets/images/cursos/{{cursos.portada}}">
+        </div>
+    </div>
+</div>

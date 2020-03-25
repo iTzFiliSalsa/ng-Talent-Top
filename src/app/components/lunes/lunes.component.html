@@ -59,9 +59,9 @@
     <h3 class="text-white">{{dia}}</h3>
     <img *ngIf="charging == true" class="logoscreenmobileday" src="../../../assets/images/logo.png" alt="">
     <div class="d-flex flex-wrap" >
-        <div class="col-xs-6 col-sm-6 col-md-3 mt-3 t" *ngFor="let cursos of datos">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3 mt-3 t" *ngFor="let cursos of datos">
             <p class="mitad">{{cursos.horaInicio}}</p>
-            <img class="imagesize" (click)="click($event, cursos.idCurso, cursos.nombreCurso)" src="../../../assets/images/martes.jpg">
+            <img class="imagesize" alt="{{cursos.nombreCurso}}" (click)="click($event, cursos.idCurso, cursos.nombreCurso)" src="../../../assets/images/cursos/{{cursos.portada}}">
         </div>
     </div>
 </div>
